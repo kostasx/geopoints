@@ -1,14 +1,9 @@
 import type { NextPage } from 'next';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import {
-  decrement,
-  increment,
-  incrementByAmount,
-} from '../redux/slices/counterSlice';
-import type { RootState } from '../redux/store';
+import { decrement, increment } from '../redux/slices/counterSlice';
 
 const Counter: NextPage = () => {
-  const count = useAppSelector((state: RootState) => state.counter.value);
+  const count = useAppSelector((state) => state.counter.value);
   const dispatch = useAppDispatch();
 
   return (
