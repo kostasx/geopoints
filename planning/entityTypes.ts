@@ -5,7 +5,7 @@ interface Tag {
 
 interface Coordinates {
     latitude: number,
-    longtitude: number
+    longitude: number
 }
 
 interface Stats {
@@ -34,7 +34,7 @@ interface List {
     description: string,
     date: number,
     tags: Tag[],
-    author: User,
+    author_name: string,
     public: boolean,
     upvotes: number,
     spotify_track_path: string,
@@ -48,8 +48,6 @@ interface User {
     img_path: string,
     bio: string,
     password: string,
-    followers: number,
-    followed: number,
     points: Point[],
     lists: List[],
     social_media_accounts: string[],
