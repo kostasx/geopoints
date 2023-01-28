@@ -27,7 +27,7 @@ model User {
 
 model List {
   id           Int      @id @default(autoincrement())
-  author       User     @relation(fields: [authorId], references: [id])
+  author       User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
   authorId     Int
   title        String
   description  String?
@@ -45,13 +45,12 @@ model Point {
   title        String
   description  String?
   public       Boolean  @default(false)
-  authorId     Int
-  longitude    BigInt
-  latitude     BigInt
+  longitude    Float
+  latitude     Float
   image_paths  String[]
   spotify_path String?
   tags         Tag[]
-  list         List     @relation(fields: [listId], references: [id])
+  list         List     @relation(fields: [listId], references: [id], onDelete: Cascade)
   listId       Int
   liked_by     User[]   @relation("LikedPoints")
 }

@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint"
+  },
+  "prisma": {
     "seed": "npx tsx prisma/lib/seed.ts"
   },
   "dependencies": {
@@ -20,6 +22,7 @@
     "redux": "^4.2.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@redux-devtools/core": "^3.13.1",
     "@types/node": "18.11.18",
     "@types/react": "18.0.27",

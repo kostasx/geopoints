@@ -1,21 +1,18 @@
 // lib/prisma.ts
-import { PrismaClient, Prisma } from '@prisma/client';
-import { getMaxListeners } from 'process';
-import { users, points, tags, lists } from './data';
+import { PrismaClient } from '@prisma/client';
+import { faker } from '@faker-js/faker';
 
 const prisma = new PrismaClient();
 
+const NUMBER_OF_FAKE_USERS = 7;
+
 (async () => {
   try {
-    const user: Prisma.UserCreateInput = {
-      email: 'test1@test.com',
-      user_name: 'test1',
-    };
-    await prisma.list.deleteMany();
-    console.log('Deleted records in lists table');
-
     await prisma.user.deleteMany();
     console.log('Deleted records in users table');
+
+    await prisma.list.deleteMany();
+    console.log('Deleted records in lists table');
 
     await prisma.point.deleteMany();
     console.log('Deleted records in points table');
@@ -23,48 +20,32 @@ const prisma = new PrismaClient();
     await prisma.tag.deleteMany();
     console.log('Deleted records in tags table');
 
-    // const userOne = await prisma.user.create({
-    //   data: {
-    //     email: 'userOne@test.com',
-    //     user_name: 'userOne',
-    //     own_lists: {
-    //       create: {
-    //         title: 'hunting spots bruv',
-    //         tags: {
-    //           create: {
-    //             name: 'hunt',
-    //           },
-    //         },
-    //         points: {
-    //           create: {
-    //             title: 'hunting spot 1',
-    //             tags: {
-    //               create: {
-    //                 name: 'hunt',
-    //               },
-    //             },
-    //           },
-    //         },
-    //       },
-    //     },
-    //   },
-    // });
-    console.log('Added user data');
-
-    // await prisma.point.createMany({
-    //   data: points,
-    // });
-    // console.log('Added point data');
-
-    // await prisma.tag.createMany({
-    //   data: tags,
-    // });
-    // console.log('Added tag data');
-
-    // await prisma.list.createMany({
-    //   data: lists,
-    // });
-    // console.log('Added list data');
+    for (let i = 0; i < NUMBER_OF_FAKE_USERS; i++) {
+      await prisma.user.create({
+        data: {
+          email: faker.internet.email(),
+          user_name: faker.internet.userName(),
+          own_lists: {
+            create: {
+              title: faker.company.catchPhrase(),
+              tags: {
+                create: {
+                  name: faker.random.word(),
+                },
+              },
+              points: {
+                create: {
+                  title: faker.company.bsNoun(),
+                  longitude: Number(faker.address.longitude()),
+                  latitude: Number(faker.address.latitude()),
+                },
+              },
+            },
+          },
+        },
+      });
+    }
+    console.log('Added data ✨');
   } catch (e) {
     console.error(e);
     process.exit(1);
