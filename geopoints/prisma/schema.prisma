@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int     @id @default(autoincrement())
+  email        String  @unique
+  user_name String @unique
+  name         String?
+  bio          String?
+  image_path   String?
+  instagram    String?
+  facebook     String?
+  own_lists    List[]
+  liked_points Point[] @relation("LikedPoints")
+  liked_lists  List[]  @relation("LikedLists")
+}
+
+model List {
+  id           Int      @id @default(autoincrement())
+  author       User     @relation(fields: [authorId], references: [id])
+  authorId     Int
+  title        String
+  description  String?
+  image_path   String?
+  createdAt    DateTime @default(now()) @map(name: "created_at")
+  public       Boolean  @default(false)
+  spotify_path String?
+  tags         Tag[]
+  points       Point[]
+  liked_by     User[]   @relation("LikedLists")
+}
+
+model Point {
+  id           Int     @id @default(autoincrement())
+  title        String
+  description  String?
+  public       Boolean @default(false)
+  authorId     Int
+  longitude    BigInt
+  latitude     BigInt
+  spotify_path String?
+  tags         Tag[]
+  list         List    @relation(fields: [listId], references: [id])
+  listId       Int
+  liked_by     User[]  @relation("LikedPoints")
+}
+
+model Tag {
+  id             Int     @id @default(autoincrement())
+  name           String
+  times_searched BigInt @default(0)
+  points         Point[]
+  lists          List[]
+}
