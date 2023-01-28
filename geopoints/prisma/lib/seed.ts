@@ -1,12 +1,16 @@
 // lib/prisma.ts
-// @ts-nocheck
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, Prisma } from '@prisma/client';
+import { getMaxListeners } from 'process';
 import { users, points, tags, lists } from './data';
 
 const prisma = new PrismaClient();
 
 (async () => {
   try {
+    const user: Prisma.UserCreateInput = {
+      email: 'test1@test.com',
+      user_name: 'test1',
+    };
     await prisma.list.deleteMany();
     console.log('Deleted records in lists table');
 
@@ -19,25 +23,32 @@ const prisma = new PrismaClient();
     await prisma.tag.deleteMany();
     console.log('Deleted records in tags table');
 
-    //------
-
-    // await prisma.$queryRaw`ALTER TABLE User AUTO_INCREMENT = 1`;
-    // console.log('reset User auto increment to 1');
-
-    // await prisma.$queryRaw`ALTER TABLE Point AUTO_INCREMENT = 1`;
-    // console.log('reset Points auto increment to 1');
-
-    // await prisma.$queryRaw`ALTER TABLE Tag AUTO_INCREMENT = 1`;
-    // console.log('reset Tags auto increment to 1');
-
-    // await prisma.$queryRaw`ALTER TABLE List AUTO_INCREMENT = 1`;
-    // console.log('reset List auto increment to 1');
-
-    //------
-
-    await prisma.user.createMany({
-      data: users,
-    });
+    // const userOne = await prisma.user.create({
+    //   data: {
+    //     email: 'userOne@test.com',
+    //     user_name: 'userOne',
+    //     own_lists: {
+    //       create: {
+    //         title: 'hunting spots bruv',
+    //         tags: {
+    //           create: {
+    //             name: 'hunt',
+    //           },
+    //         },
+    //         points: {
+    //           create: {
+    //             title: 'hunting spot 1',
+    //             tags: {
+    //               create: {
+    //                 name: 'hunt',
+    //               },
+    //             },
+    //           },
+    //         },
+    //       },
+    //     },
+    //   },
+    // });
     console.log('Added user data');
 
     // await prisma.point.createMany({
