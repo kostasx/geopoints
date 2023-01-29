@@ -25,10 +25,14 @@ const NUMBER_OF_FAKE_USERS = 7;
         data: {
           email: faker.internet.email(),
           user_name: faker.internet.userName(),
+          name: faker.name.fullName(),
+          bio: faker.lorem.sentence(),
           image_path: faker.image.avatar(),
           own_lists: {
             create: {
               title: faker.company.catchPhrase(),
+              description: faker.lorem.sentence(),
+              image_path: faker.image.nature(),
               tags: {
                 create: {
                   name: faker.random.word(),
