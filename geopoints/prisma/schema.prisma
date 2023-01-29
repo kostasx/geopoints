@@ -13,12 +13,13 @@ datasource db {
 model User {
   id           Int     @id @default(autoincrement())
   email        String  @unique
-  user_name String @unique
+  user_name    String  @unique
   name         String?
   bio          String?
   image_path   String?
   instagram    String?
   facebook     String?
+  password     String?
   own_lists    List[]
   liked_points Point[] @relation("LikedPoints")
   liked_lists  List[]  @relation("LikedLists")
@@ -26,7 +27,7 @@ model User {
 
 model List {
   id           Int      @id @default(autoincrement())
-  author       User     @relation(fields: [authorId], references: [id])
+  author       User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
   authorId     Int
   title        String
   description  String?
@@ -40,24 +41,24 @@ model List {
 }
 
 model Point {
-  id           Int     @id @default(autoincrement())
+  id           Int      @id @default(autoincrement())
   title        String
   description  String?
-  public       Boolean @default(false)
-  authorId     Int
-  longitude    BigInt
-  latitude     BigInt
+  public       Boolean  @default(false)
+  longitude    Float
+  latitude     Float
+  image_paths  String[]
   spotify_path String?
   tags         Tag[]
-  list         List    @relation(fields: [listId], references: [id])
+  list         List     @relation(fields: [listId], references: [id], onDelete: Cascade)
   listId       Int
-  liked_by     User[]  @relation("LikedPoints")
+  liked_by     User[]   @relation("LikedPoints")
 }
 
 model Tag {
   id             Int     @id @default(autoincrement())
   name           String
-  times_searched BigInt @default(0)
+  times_searched BigInt  @default(0)
   points         Point[]
   lists          List[]
 }
