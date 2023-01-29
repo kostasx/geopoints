@@ -25,6 +25,7 @@ const NUMBER_OF_FAKE_USERS = 7;
         data: {
           email: faker.internet.email(),
           user_name: faker.internet.userName(),
+          image_path: faker.image.avatar(),
           own_lists: {
             create: {
               title: faker.company.catchPhrase(),
@@ -38,6 +39,7 @@ const NUMBER_OF_FAKE_USERS = 7;
                   title: faker.company.bsNoun(),
                   longitude: Number(faker.address.longitude()),
                   latitude: Number(faker.address.latitude()),
+                  image_paths: faker.image.nature(),
                 },
               },
             },
