@@ -20,7 +20,6 @@ const Home: NextPage = () => {
       try {
         const data = await fetchUserData(Auth.user?.email!);
         if (data && setUserData) {
-          console.log('im on query');
           setUserData({ ...data }); // set user data to global context
           return data;
         }
