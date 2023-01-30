@@ -1,7 +1,8 @@
+import { useContext } from 'react';
 import type { NextPage } from 'next';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { useQuery } from 'react-query';
-
+import UserDataContext from '../contexts/UserDataContext';
 import Map from '../components/Map';
 import fetchUserData from '../util/fetchUserData';
 import Footer from '../components/Footer';
@@ -9,12 +10,24 @@ import Header from '../components/Header';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const Home: NextPage = () => {
+  const { userData, setUserData } = useContext(UserDataContext);
   const Auth = useUser();
-  console.log('here')
+
   // fetch the user data with ReactQuery using the user email from auth0
   const { isError, isLoading, data, error, refetch } = useQuery(
     ['fectchUserData', Auth.user?.email],
-    () => fetchUserData(Auth.user?.email!),
+    async () => {
+      try {
+        const data = await fetchUserData(Auth.user?.email!);
+        if (data && setUserData) {
+          console.log('im on query');
+          setUserData({ ...data }); // set user data to global context
+          return data;
+        }
+      } catch (error) {
+        throw new Error('Error fetching data');
+      }
+    },
     {
       enabled: false,
     }

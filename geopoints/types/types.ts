@@ -22,35 +22,29 @@ interface Point {
 
 interface List {
   title: string;
-  points: Point[];
+  author: User;
   img_path: string;
   description: string;
-  date: number;
+  createdAt: number;
   tags: Tag[];
-  author_name: string;
   public: boolean;
-  upvotes: number;
-  spotify_track_path: string;
-  share_id: string;
+  spotify_path?: string;
+  points: Point[];
 }
 
 interface User {
   id: number;
   email: string;
-  name: string;
-  userName: string;
-  bio: string;
-  imagePath: string;
-  password: string;
-  points: Point[];
-  ownLists: List[];
-  social_media_accounts: string[];
-  downloaded_points: Point[];
-  downloaded_lists: List[];
+  user_name: string;
+  name?: string;
+  bio?: string;
+  image_path?: string;
+  password?: string;
+  own_lists: List[];
+  instagram?: string;
+  facebook?: string;
   liked_points: Point[];
   liked_lists: List[];
-  disliked_points: Point[];
-  disliked_lists: List[];
 }
 
 export type { Tag, User, Coordinates, Point, List };
