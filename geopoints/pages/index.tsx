@@ -7,6 +7,7 @@ import fetchUserData from '../util/fetchUserData';
 
 const Home: NextPage = () => {
   // get the user from auth0
+  console.log('home')
   const { user } = useUser();
 
   // fetch the user data with ReactQuery using the user email
@@ -24,7 +25,10 @@ const Home: NextPage = () => {
     return <span>Error: {error.message}</span>;
   }
 
-  console.log({ data });
+  if (!data){
+    return <span>no data</span>
+  }
+  // console.log({ data });
   return (
     <main className="flex flex-col h-screen justify-between bg-black">
       <Header />

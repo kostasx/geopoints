@@ -3,7 +3,6 @@
 const baseUrl = 'http://localhost:3000';
 const fetchUserData = async (userEmail: string) => {
   if (userEmail) {
-    console.log({ userEmail });
     const res = await fetch(`${baseUrl}/api/users/${userEmail}`);
     if (!res.ok) {
       throw new Error('error fetching user data');

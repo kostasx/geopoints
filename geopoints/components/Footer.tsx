@@ -11,19 +11,13 @@ const Footer = () => {
     <>
       {showSidebar && <ListsSidebar showSidebar={showSidebar} />}
       <footer className="bg-white h-16 z-10">
-        <div className="p-4 flex justify-between">
-          <div>
-            <BsFillGeoFill className="text-gray-600 w-8 h-8" />
-          </div>
-          <div>
-            <IoAddCircleOutline className="text-gray-600 w-8 h-8" />
-          </div>
-          <div>
-            <AiOutlineUnorderedList
-              onClick={() => setShowSidebar(!showSidebar)}
-              className="text-gray-600 w-8 h-8"
-            />
-          </div>
+        <div className="p-4 flex justify-between text-gray-600 ">
+          <BsFillGeoFill className="w-8 h-8" />
+          <IoAddCircleOutline className="w-8 h-8" />
+          <AiOutlineUnorderedList
+            onClick={() => setShowSidebar(!showSidebar)}
+            className="w-8 h-8"
+          />
         </div>
       </footer>
     </>
