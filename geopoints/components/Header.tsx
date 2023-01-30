@@ -1,28 +1,36 @@
-import { AiOutlineSearch } from 'react-icons/ai';
+import Link from 'next/link'
 import Image from 'next/image.js';
 
+import { SearchBar } from './SearchBar';
+
 const Header = () => {
+  function redirectProfile() {
+    
+  }
+
   return (
-    <div className="bg-white h-16">
-      <div className="p-4 flex justify-between">
-        <div>
-          <AiOutlineSearch className="text-gray-600 w-8 h-8" />
-        </div>
-        <input
-          type="text"
-          name="search"
-          className="block w-full shadow italic bg-white text rounded-md mx-10 border-gray-300 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 text-sm"
-          placeholder="Search..."
-        ></input>
-        <div>
+    <div>
+       
+          <SearchBar />
+        <Link href='' className='fixed 
+            right-0 
+            top-0 
+            flex
+            z-10
+            justify-center
+            items-center
+            rounded-bl-lg
+            bg-white 
+            w-16 
+            h-16'>
           <Image
             src="/fake-user-profile-pic.png"
             alt="Profile picture"
+            
             width={64}
             height={64}
           />
-        </div>
-      </div>
+        </Link>
     </div>
   );
 };
