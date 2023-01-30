@@ -52,6 +52,16 @@ function Map() {
                 zoom={10}
                 onLoad={onLoad}
                 onUnmount={onUnmount}
+                options={{
+                    streetViewControl: false,
+                    zoomControlOptions: {
+                        position: google.maps.ControlPosition.LEFT_CENTER,
+                    },
+                    mapTypeControlOptions:{
+                        position: google.maps.ControlPosition.LEFT_CENTER,
+                        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+                    }
+                }}
             >
                 {/* <Marker position={center}>
 
