@@ -51,6 +51,37 @@ const NUMBER_OF_FAKE_USERS = 7;
         },
       });
     }
+    //create user with your email. Set .env to your email.
+    await prisma.user.create({
+      data: {
+        email: process.env.MY_EMAIL!,
+        user_name: faker.internet.userName(),
+        name: faker.name.fullName(),
+        bio: faker.lorem.sentence(),
+        image_path: faker.image.avatar(),
+        own_lists: {
+          create: {
+            title: faker.company.catchPhrase(),
+            description: faker.lorem.sentence(),
+            image_path: faker.image.nature(),
+            tags: {
+              create: {
+                name: faker.random.word(),
+              },
+            },
+            points: {
+              create: {
+                title: faker.company.bsNoun(),
+                longitude: Number(faker.address.longitude()),
+                latitude: Number(faker.address.latitude()),
+                image_paths: faker.image.nature(),
+              },
+            },
+          },
+        },
+      },
+    });
+
     console.log('Added data ✨');
   } catch (e) {
     console.error(e);

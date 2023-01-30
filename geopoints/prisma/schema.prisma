@@ -13,20 +13,13 @@ datasource db {
 model User {
   id           Int     @id @default(autoincrement())
   email        String  @unique
-<<<<<<< HEAD
-  user_name String @unique
-=======
   user_name    String  @unique
->>>>>>> 934190dfff91971ab881773c0f420906e8e18be7
   name         String?
   bio          String?
   image_path   String?
   instagram    String?
   facebook     String?
-<<<<<<< HEAD
-=======
   password     String?
->>>>>>> 934190dfff91971ab881773c0f420906e8e18be7
   own_lists    List[]
   liked_points Point[] @relation("LikedPoints")
   liked_lists  List[]  @relation("LikedLists")
@@ -34,11 +27,7 @@ model User {
 
 model List {
   id           Int      @id @default(autoincrement())
-<<<<<<< HEAD
-  author       User     @relation(fields: [authorId], references: [id])
-=======
   author       User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
->>>>>>> 934190dfff91971ab881773c0f420906e8e18be7
   authorId     Int
   title        String
   description  String?
@@ -52,20 +41,6 @@ model List {
 }
 
 model Point {
-<<<<<<< HEAD
-  id           Int     @id @default(autoincrement())
-  title        String
-  description  String?
-  public       Boolean @default(false)
-  authorId     Int
-  longitude    BigInt
-  latitude     BigInt
-  spotify_path String?
-  tags         Tag[]
-  list         List    @relation(fields: [listId], references: [id])
-  listId       Int
-  liked_by     User[]  @relation("LikedPoints")
-=======
   id           Int      @id @default(autoincrement())
   title        String
   description  String?
@@ -78,17 +53,12 @@ model Point {
   list         List     @relation(fields: [listId], references: [id], onDelete: Cascade)
   listId       Int
   liked_by     User[]   @relation("LikedPoints")
->>>>>>> 934190dfff91971ab881773c0f420906e8e18be7
 }
 
 model Tag {
   id             Int     @id @default(autoincrement())
   name           String
-<<<<<<< HEAD
-  times_searched BigInt @default(0)
-=======
   times_searched BigInt  @default(0)
->>>>>>> 934190dfff91971ab881773c0f420906e8e18be7
   points         Point[]
   lists          List[]
 }
