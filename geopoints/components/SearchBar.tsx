@@ -46,6 +46,7 @@ export const SearchBar = () => {
                             bg-white 
                             text 
                             rounded-md 
+                            pl-2
                             border-gray-300 
                             focus:border-indigo-500 
                             focus:ring-indigo-500 
