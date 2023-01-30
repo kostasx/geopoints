@@ -36,8 +36,16 @@ function Map() {
 
     return isLoaded ? (
         <div className='
-        z=0
+        fixed 
+        flex 
+        justify-center 
+        items-center 
+        h-screen 
+        w-screen 
+        top-0
+        left-0
         '>
+
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}
@@ -50,6 +58,9 @@ function Map() {
                 </Marker> */}
                 <></>
             </GoogleMap>
+            <div className='absolute z-20'>
+                <TbCrosshair className='text-gray-600 w-8 h-8' />
+            </div>
         </div>
     ) : <></>
 }
