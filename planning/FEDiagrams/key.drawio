@@ -1,0 +1,28 @@
+<mxfile host="65bd71144e">
+    <diagram id="ho2o-1g2pbGaYwQHvWm9" name="Page-1">
+        <mxGraphModel dx="1154" dy="510" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="/route&lt;br&gt;&amp;lt;ComponentName&amp;gt;" style="ellipse;whiteSpace=wrap;html=1;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="420" width="130" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="interactive element" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="510" width="90" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="external api" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="350" width="90" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="" style="group" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="60" y="570" width="230" height="290" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" parent="7" vertex="1">
+                    <mxGeometry width="230" height="290" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&amp;lt;SmallerComponent&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="7" vertex="1">
+                    <mxGeometry x="20.909090909090907" y="12.083333333333334" width="125.45454545454544" height="36.25" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
