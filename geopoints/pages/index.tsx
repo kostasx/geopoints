@@ -1,13 +1,16 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 const Home: NextPage = () => {
   return (
-    <>
-      <h1 className="text-neutral-500">home works</h1>
-    </>
+    <main className="flex flex-col h-screen justify-between">
+      <Header />
+      <section className="mb-auto">
+        <h1 className="text-neutral-500">home works</h1>
+      </section>
+      <Footer />
+    </main>
   );
 };
 
