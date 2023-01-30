@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <UserProvider>
       <QueryClientProvider client={queryClient}>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </QueryClientProvider>
     </UserProvider>
   );

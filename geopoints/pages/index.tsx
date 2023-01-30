@@ -1,34 +1,44 @@
 import type { NextPage } from 'next';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { useQuery } from 'react-query';
 import fetchUserData from '../util/fetchUserData';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const Home: NextPage = () => {
-  // get the user from auth0
-  console.log('home')
-  const { user } = useUser();
+  const Auth = useUser();
 
-  // fetch the user data with ReactQuery using the user email
-  const { isError, isLoading, data, error } = useQuery(
-    ['fectchUserData', user?.email],
-    () => fetchUserData(user?.email!)
+  // fetch the user data with ReactQuery using the user email from auth0
+  const { isError, isLoading, data, error, refetch } = useQuery(
+    ['fectchUserData', Auth.user?.email],
+    () => fetchUserData(Auth.user?.email!),
+    {
+      enabled: false,
+    }
   );
 
-  // todo: show spinner when loading
+  if (Auth.isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (Auth.error) {
+    return <span>Error on Auth</span>;
+  }
+
+  if (!data) {
+    refetch();
+    return null;
+  }
+
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <LoadingSpinner />;
   }
 
   if (isError && error instanceof Error) {
     return <span>Error: {error.message}</span>;
   }
 
-  if (!data){
-    return <span>no data</span>
-  }
-  // console.log({ data });
   return (
     <main className="flex flex-col h-screen justify-between bg-black">
       <Header />

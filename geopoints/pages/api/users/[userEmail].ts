@@ -9,14 +9,19 @@ const getUserData = async (req: NextApiRequest, res: NextApiResponse) => {
     if (userEmail && typeof userEmail === 'string') {
       const userData = await prisma.user.findUnique({
         where: { email: userEmail },
+        include: {
+          own_lists: true,
+          liked_lists: true,
+          liked_points: true,
+        },
       });
       res.status(200).json(userData);
     } else {
       throw new Error('Incorrect email');
     }
   } catch (error) {
-    res.status(500);
     console.error({ error });
+    res.status(500).json({ error });
   }
 };
 

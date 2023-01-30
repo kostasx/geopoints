@@ -1,9 +1,11 @@
-// we use this function to fetch the user data client side only, for ease of develpment
+// we use this function to fetch the user data client side only, for ease of development
 // todo fix types
-const baseUrl = 'http://localhost:3000';
+
 const fetchUserData = async (userEmail: string) => {
   if (userEmail) {
-    const res = await fetch(`${baseUrl}/api/users/${userEmail}`);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_HOST}/api/users/${userEmail}`
+    );
     if (!res.ok) {
       throw new Error('error fetching user data');
     }
