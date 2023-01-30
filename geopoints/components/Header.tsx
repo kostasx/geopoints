@@ -5,9 +5,9 @@ import { useContext } from 'react';
 import UserDataContext from '../contexts/UserDataContext';
 
 const Header = () => {
-  const { userData, setUserData } = useContext(UserDataContext);
+  const { userData } = useContext(UserDataContext);
   console.log(
-    'user data from global context in the header component',
+    'User data from global context in the header component',
     userData
   );
   function redirectProfile() {}
@@ -33,8 +33,9 @@ const Header = () => {
         <Image
           src={userData?.image_path || '/fake-user-profile-pic.png'}
           alt="Profile picture"
-          width={64}
-          height={64}
+          width={40}
+          height={40}
+          className="rounded-full"
         />
       </Link>
     </div>

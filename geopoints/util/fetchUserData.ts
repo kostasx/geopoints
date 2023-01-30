@@ -7,7 +7,7 @@ const fetchUserData = async (userEmail: string) => {
       `${process.env.NEXT_PUBLIC_BACKEND_HOST}/api/users/${userEmail}`
     );
     if (!res.ok) {
-      throw new Error('error fetching user data');
+      throw new Error('Error fetching user data');
     }
     const userData = await res.json();
     return userData;
