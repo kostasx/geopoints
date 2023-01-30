@@ -19,6 +19,7 @@ const Header = () => {
             z-10
             justify-center
             items-center
+            overflow-hidden
             rounded-bl-lg
             bg-white 
             w-16 
