@@ -19,18 +19,18 @@ export const SearchBar = () => {
             justify-center
             items-center
             rounded-br-lg
-            bg-white
+            backdrop-blur-sm
             w-16
             h-16'>
-                <AiOutlineSearch className="text-gray-600 w-8 h-8" />
+                <AiOutlineSearch className="text-white w-8 h-8" />
             </button>
             {showSearchInput &&
                 <div className='fixed
                 flex
                 shadow-none
                 border-none
-                bg-white 
-                top-0 
+                backdrop-blur-sm
+                top-0
                 z-10
                 pl-16
                 pr-16
@@ -43,7 +43,7 @@ export const SearchBar = () => {
                             w-full
                             shadow
                             italic
-                            bg-white
+                            backdrop-blur-sm
                             text
                             rounded-md
                             pl-2

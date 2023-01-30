@@ -21,7 +21,7 @@ const Header = () => {
             items-center
             overflow-hidden
             rounded-bl-lg
-            bg-white
+            backdrop-blur-sm
             w-16
             h-16'>
           <Image

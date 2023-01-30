@@ -10,8 +10,8 @@ const Footer = () => {
   return (
     <>
       {showSidebar && <ListsSidebar showSidebar={showSidebar} />}
-      <footer className="bg-white h-16 z-10">
-        <div className="p-4 flex justify-between text-gray-600 ">
+      <footer className="h-16 z-10 backdrop-blur-sm">
+        <div className="p-4 flex justify-between text-white ">
           <BsFillGeoFill className="w-8 h-8" />
           <IoAddCircleOutline className="w-8 h-8" />
           <AiOutlineUnorderedList
