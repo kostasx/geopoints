@@ -10,7 +10,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 
 const Home: NextPage = () => {
   const Auth = useUser();
-
+  console.log('here')
   // fetch the user data with ReactQuery using the user email from auth0
   const { isError, isLoading, data, error, refetch } = useQuery(
     ['fectchUserData', Auth.user?.email],
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
   }
 
   if (Auth.error) {
-    return <span>Error on Auth</span>;
+    return <span className="text-black">Error on Auth</span>;
   }
 
   if (!data) {
@@ -38,14 +38,14 @@ const Home: NextPage = () => {
   }
 
   if (isError && error instanceof Error) {
-    return <span>Error: {error.message}</span>;
+    return <span className="text-black">Error: {error.message}</span>;
   }
 
   return (
-    <main className="flex flex-col h-screen justify-between bg-black">
+    <main className="flex flex-col h-screen justify-between bg-white">
       <Header />
       <section className="mb-auto">
-        <Map/>
+        <Map />
         {/* <h1 className="text-neutral-500">{data.email}</h1>
         <h1 className="text-neutral-500">{data.bio}</h1> */}
       </section>
