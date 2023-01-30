@@ -26,7 +26,7 @@ const Home: NextPage = () => {
 
   console.log({ data });
   return (
-    <main className="flex flex-col h-screen justify-between">
+    <main className="flex flex-col h-screen justify-between bg-black">
       <Header />
       <section className="mb-auto">
         <h1 className="text-neutral-500">{data.email}</h1>
