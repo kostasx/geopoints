@@ -15,7 +15,7 @@ export const SearchBar = () => {
             left-0
             top-0
             flex
-            z-10
+            z-20
             justify-center
             items-center
             rounded-br-lg
@@ -29,9 +29,9 @@ export const SearchBar = () => {
                 flex
                 shadow-none
                 border-none
-                bg-white
-                top-0
-                z-0
+                bg-white 
+                top-0 
+                z-10
                 pl-16
                 pr-16
                 h-16
