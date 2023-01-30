@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^2.2.1",
     "@prisma/client": "^4.9.0",
     "@reduxjs/toolkit": "^1.9.1",
     "@types/react-redux": "^7.1.25",
