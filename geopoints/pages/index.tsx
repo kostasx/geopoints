@@ -3,6 +3,8 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { useQuery } from 'react-query';
+
+import Map from '../components/Map';
 import fetchUserData from '../util/fetchUserData';
 
 const Home: NextPage = () => {
@@ -29,8 +31,9 @@ const Home: NextPage = () => {
     <main className="flex flex-col h-screen justify-between bg-black">
       <Header />
       <section className="mb-auto">
-        <h1 className="text-neutral-500">{data.email}</h1>
-        <h1 className="text-neutral-500">{data.bio}</h1>
+        <Map/>
+        {/* <h1 className="text-neutral-500">{data.email}</h1>
+        <h1 className="text-neutral-500">{data.bio}</h1> */}
       </section>
       <Footer />
     </main>
