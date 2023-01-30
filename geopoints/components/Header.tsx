@@ -1,9 +1,6 @@
 import { AiOutlineSearch } from 'react-icons/ai';
 import Image from 'next/image.js';
 
-const FAKE_USER_IMG =
-  'https://xsgames.co/randomusers/assets/images/favicon.png';
-
 const Header = () => {
   return (
     <div className="bg-white h-16">
