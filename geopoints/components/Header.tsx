@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image.js';
 import { SearchBar } from './SearchBar';
 import { useContext } from 'react';
-import {UserDataContext} from '../contexts/UserDataContext';
+import { UserDataContext } from '../contexts/UserDataContext';
 
 const Header = () => {
   const { userData } = useContext(UserDataContext);
@@ -31,7 +31,7 @@ const Header = () => {
             h-16"
       >
         <Image
-          src={userData?.image_path || '/fake-user-profile-pic.png'}
+          src={userData?.imagePath || '/fake-user-profile-pic.png'}
           alt="Profile picture"
           width={40}
           height={40}

@@ -11,54 +11,54 @@ datasource db {
 }
 
 model User {
-  id           Int     @id @default(autoincrement())
-  email        String  @unique
-  user_name    String  @unique
-  name         String?
-  bio          String?
-  image_path   String?
-  instagram    String?
-  facebook     String?
-  password     String?
-  own_lists    List[]
-  liked_points Point[] @relation("LikedPoints")
-  liked_lists  List[]  @relation("LikedLists")
+  id          Int     @id @default(autoincrement())
+  email       String  @unique
+  userName    String  @unique @map(name: "user_name")
+  name        String?
+  bio         String?
+  imagePath   String? @map(name: "image_path")
+  instagram   String?
+  facebook    String?
+  password    String?
+  ownLists    List[]
+  likedPoints Point[] @relation("LikedPoints")
+  likedLists  List[]  @relation("LikedLists")
 }
 
 model List {
-  id           Int      @id @default(autoincrement())
-  author       User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  authorId     Int
-  title        String
-  description  String?
-  image_path   String?
-  createdAt    DateTime @default(now()) @map(name: "created_at")
-  public       Boolean  @default(false)
-  spotify_path String?
-  tags         Tag[]
-  points       Point[]
-  liked_by     User[]   @relation("LikedLists")
+  id          Int      @id @default(autoincrement())
+  author      User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId    Int      @map(name: "author_id")
+  title       String
+  description String?
+  imagePath   String?  @map(name: "image_path")
+  createdAt   DateTime @default(now()) @map(name: "created_at")
+  public      Boolean  @default(false)
+  spotifyPath String?  @map(name: "spotify_path")
+  tags        Tag[]
+  points      Point[]
+  liked_by    User[]   @relation("LikedLists")
 }
 
 model Point {
-  id           Int      @id @default(autoincrement())
-  title        String
-  description  String?
-  public       Boolean  @default(false)
-  longitude    Float
-  latitude     Float
-  image_paths  String[]
-  spotify_path String?
-  tags         Tag[]
-  list         List     @relation(fields: [listId], references: [id], onDelete: Cascade)
-  listId       Int
-  liked_by     User[]   @relation("LikedPoints")
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  public      Boolean  @default(false)
+  lng   Float
+  lat    Float
+  imagePaths  String[] @map(name: "image_paths")
+  spotifyPath String?  @map(name: "spotify_path")
+  tags        Tag[]
+  list        List     @relation(fields: [listId], references: [id], onDelete: Cascade)
+  listId      Int      @map(name: "list_id")
+  likedBy     User[]   @relation("LikedPoints")
 }
 
 model Tag {
-  id             Int     @id @default(autoincrement())
-  name           String
-  times_searched BigInt  @default(0)
-  points         Point[]
-  lists          List[]
+  id            Int     @id @default(autoincrement())
+  name          String
+  timesSearched BigInt  @default(0) @map(name: "times_searched")
+  points        Point[]
+  lists         List[]
 }

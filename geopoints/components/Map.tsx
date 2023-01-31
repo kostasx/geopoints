@@ -3,6 +3,8 @@ import { useState, useCallback } from 'react';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import Image from 'next/image.js';
 
+import { Coordinates } from '../types/types'
+
 import { Marker } from '@react-google-maps/api';
 import LoadingSpinner from './LoadingSpinner';
 
@@ -10,11 +12,6 @@ const containerStyle = {
   width: '100vw',
   height: '100vh',
 };
-
-export interface Coordinates {
-  lat: number;
-  lng: number;
-}
 
 function Map() {
   const [center, setCenter] = useState<Coordinates | null>(null);

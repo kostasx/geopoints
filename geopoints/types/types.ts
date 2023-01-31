@@ -1,11 +1,11 @@
 interface Tag {
   name: string;
-  times_searched?: number;
+  timesSearched?: number;
 }
 
 interface Coordinates {
-  latitude: number;
-  longitude: number;
+  lat: number;
+  lng: number;
 }
 
 interface Point {
@@ -14,37 +14,37 @@ interface Point {
   description: string;
   date: number;
   tags: Tag[];
-  img_paths: string[];
+  imgPaths: string[];
   author: User;
   public: boolean;
-  share_id: string;
+  share_id?: string;
 }
 
 interface List {
   title: string;
   author: User;
-  img_path: string;
+  imgPath: string;
   description: string;
   createdAt: number;
   tags: Tag[];
   public: boolean;
-  spotify_path?: string;
+  spotifyPath?: string;
   points: Point[];
 }
 
 interface User {
   id: number;
   email: string;
-  user_name: string;
+  userName: string;
   name?: string;
   bio?: string;
-  image_path?: string;
+  imagePath?: string;
   password?: string;
-  own_lists: List[];
+  ownLists: List[];
   instagram?: string;
   facebook?: string;
-  liked_points: Point[];
-  liked_lists: List[];
+  likedPoints: Point[];
+  likedLists: List[];
 }
 
 export type { Tag, User, Coordinates, Point, List };

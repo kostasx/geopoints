@@ -24,15 +24,15 @@ const NUMBER_OF_FAKE_USERS = 7;
       await prisma.user.create({
         data: {
           email: faker.internet.email(),
-          user_name: faker.internet.userName(),
+          userName: faker.internet.userName(),
           name: faker.name.fullName(),
           bio: faker.lorem.sentence(),
-          image_path: faker.image.avatar(),
-          own_lists: {
+          imagePath: faker.image.avatar(),
+          ownLists: {
             create: {
               title: faker.company.catchPhrase(),
               description: faker.lorem.sentence(),
-              image_path: faker.image.nature(),
+              imagePath: faker.image.nature(),
               tags: {
                 create: {
                   name: faker.random.word(),
@@ -41,9 +41,9 @@ const NUMBER_OF_FAKE_USERS = 7;
               points: {
                 create: {
                   title: faker.company.bsNoun(),
-                  longitude: Number(faker.address.longitude()),
-                  latitude: Number(faker.address.latitude()),
-                  image_paths: faker.image.nature(),
+                  lng: Number(faker.address.longitude()),
+                  lat: Number(faker.address.latitude()),
+                  imagePaths: faker.image.nature(),
                 },
               },
             },
@@ -55,15 +55,15 @@ const NUMBER_OF_FAKE_USERS = 7;
     await prisma.user.create({
       data: {
         email: process.env.MY_EMAIL!,
-        user_name: faker.internet.userName(),
+        userName: faker.internet.userName(),
         name: faker.name.fullName(),
         bio: faker.lorem.sentence(),
-        image_path: faker.image.avatar(),
-        own_lists: {
+        imagePath: faker.image.avatar(),
+        ownLists: {
           create: {
             title: faker.company.catchPhrase(),
             description: faker.lorem.sentence(),
-            image_path: faker.image.nature(),
+            imagePath: faker.image.nature(),
             tags: {
               create: {
                 name: faker.random.word(),
@@ -72,9 +72,9 @@ const NUMBER_OF_FAKE_USERS = 7;
             points: {
               create: {
                 title: faker.company.bsNoun(),
-                longitude: Number(faker.address.longitude()),
-                latitude: Number(faker.address.latitude()),
-                image_paths: faker.image.nature(),
+                lng: Number(faker.address.longitude()),
+                lat: Number(faker.address.latitude()),
+                imagePaths: faker.image.nature(),
               },
             },
           },
