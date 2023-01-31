@@ -1,5 +1,5 @@
 import { createContext, useState, Dispatch, SetStateAction } from 'react';
-import { Coordinates } from from '../types/types';
+import { Coordinates } from '../types/types';
 
 interface PointCreate {
   centerCoordinates: Coordinates | null;
