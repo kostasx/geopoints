@@ -15,7 +15,7 @@ const containerStyle = {
 
 function Map() {
   const [center, setCenter] = useState<Coordinates | null>(null);
-  const [map, setMap] = useState(null);
+  const [map, setMap] = useState< google.maps.Map | null>(null);
 
   getUserPosition();
 
@@ -26,15 +26,18 @@ function Map() {
   });
 
   const onLoad = useCallback(
-    function callback(map: any) {
-      // This is just an example of getting and using the map instance!!! don't just blindly copy!
+    function callback(map:google.maps.Map) {
       const bounds = new window.google.maps.LatLngBounds(center);
       map.fitBounds(bounds);
-
+console.log(map.getCenter()?.lat())
       setMap(map);
     },
     [center]
   );
+
+
+
+  if (map) { console.log(map.getCenter()?.lat())}
 
   const onUnmount = useCallback(function callback(map: any) {
     setMap(null);
@@ -71,6 +74,7 @@ function Map() {
         center={center}
         zoom={10}
         onLoad={onLoad}
+        // onLoad={(map)=>{}}
         onUnmount={onUnmount}
         options={{
           streetViewControl: false,
