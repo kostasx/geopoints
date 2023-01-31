@@ -45,8 +45,8 @@ model Point {
   title       String
   description String?
   public      Boolean  @default(false)
-  lng   Float
-  lat    Float
+  lng         Float
+  lat         Float
   imagePaths  String[] @map(name: "image_paths")
   spotifyPath String?  @map(name: "spotify_path")
   tags        Tag[]
