@@ -1,25 +1,34 @@
-import { createContext, useState, Dispatch, SetStateAction } from 'react';
+import React, {
+  createContext,
+  useState,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 import { User } from '../types/types';
 
 interface UserData {
   userData: User | null;
   setUserData: Dispatch<SetStateAction<null>> | null;
 }
+
 const UserDataContext = createContext<UserData>({
   userData: null,
   setUserData: null,
 });
 
-function UserDataContextProvider({ children }: any) {
+function UserDataContextProvider({ children }: { children: React.ReactNode }) {
   const [userData, setUserData] = useState(null);
 
   return (
-    <UserDataContext.Provider value={{
-      userData, setUserData
-    }}>
+    <UserDataContext.Provider
+      value={{
+        userData,
+        setUserData,
+      }}
+    >
       {children}
     </UserDataContext.Provider>
-  )
+  );
 }
 
-export { UserDataContext, UserDataContextProvider }
+export { UserDataContext, UserDataContextProvider };
