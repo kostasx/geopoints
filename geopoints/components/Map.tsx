@@ -22,6 +22,10 @@ function Map() {
 
   getUserPosition();
 
+function logCenter() {
+  console.log(center)
+}
+
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.NEXT_PUBLIC_API_KEY!,
@@ -98,6 +102,7 @@ function Map() {
           height={40}
         />
       </div>
+      <button className="top-6 absolute z-20" onClick={logCenter}>Log center</button>
     </div>
   ) : (
     <></>

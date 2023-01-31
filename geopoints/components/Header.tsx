@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image.js';
 import { SearchBar } from './SearchBar';
 import { useContext } from 'react';
-import UserDataContext from '../contexts/UserDataContext';
+import {UserDataContext} from '../contexts/UserDataContext';
 
 const Header = () => {
   const { userData } = useContext(UserDataContext);
